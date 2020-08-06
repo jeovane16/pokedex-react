@@ -1,0 +1,89 @@
+.backgroundMainConfirm {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0,0,0, 0.5);
+}
+
+.containerMainConfirm {
+  position: absolute;
+  top: 25%;
+  bottom: 25%;
+  height: 450px;
+  align-self: center;
+  width: 70%;
+  border-radius: 4px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--dracula-color-secundary);
+  padding: 10px;
+}
+
+.containerMainConfirm img {
+  border: 4px solid var(--red-color);
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  height: 200px;
+  width: 130px;
+}
+
+.trainerQuestion {
+  border: 4px solid var(--red-color);
+  border-radius: 4px;
+  height: 105px;
+  width: 90%;
+  background-color: #FFFFFF;
+}
+
+.trainerQuestion p {
+
+  color: var(--dracula-color);
+  font-size: 1rem;
+  background-color: #FFFFFF;
+  padding: 10px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15em;
+  animation:
+    typing 3.5s steps(40, end);
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+.containerMainConfirm p span {
+  color: var(--red-color);
+}
+
+.containerMainConfirm button {
+  border: 4px solid var(--red-color);
+  border-radius: 4px;
+  background-color: var(--red-color);
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-family: 'Press Start 2P', cursive;
+  height: 35px;
+  width: 200px;
+  cursor: pointer;
+  transition: background-color 400ms;
+}
+
+.containerMainConfirm button:hover {
+  background-color: rgba(237, 50, 55, 0.8);
+}
