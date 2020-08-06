@@ -1,0 +1,13 @@
+.containerHeader {
+  display: flex;
+  justify-content: space-between;
+  background-image: url("../../assets/header.svg");
+  height: 100px;
+}
+
+.containerHeader h1 {
+  margin-left: 20%;
+  margin-top: auto;
+  margin-bottom: auto;
+  color: #FFFFFF;
+}
