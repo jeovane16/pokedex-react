@@ -8,8 +8,8 @@ body {
 }
 
 :root{
-  --red-color: #ED3237;
+  --red-color: #ed3237;
   --dracula-color: #282A36;
   --dracula-color-secundary: #44475A;
-  font-size: 16px;
+  font-size: 18px;
 }
