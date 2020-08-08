@@ -4,12 +4,12 @@ import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 import { MainHome } from './components/MainHome/MainHome';
 
-//          <Route exact path='/confirm' render={ConfirmWindow}/>
 import {
   BrowserRouter,
   Switch,
   Route
 } from 'react-router-dom';
+import {MainPokedex} from "./components/MainPokedex/MainPokedex";
 
 function App() {
 
@@ -21,6 +21,7 @@ function App() {
           <Route exact path='/' render={()=>
             <MainHome/>
           }/>
+          <Route exact path='/pokedex' render={MainPokedex}/>
         </Switch>
       </div>
       <Footer/>

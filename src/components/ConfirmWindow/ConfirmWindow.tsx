@@ -2,6 +2,8 @@ import React from 'react';
 import './ConfirmWindow.css';
 import {useSelector, useDispatch} from 'react-redux';
 
+import { Link } from 'react-router-dom';
+
 import { setedTrainer } from '../../features/trainer/trainerSlice';
 
 interface Trainer {
@@ -33,8 +35,8 @@ export const ConfirmWindow = () => {
           <p>Would you like to be called <span>{trainer.name}</span>?</p>
         </div>
         <div className='buttonsAction'>
-          <button onClick={onClickCancel}>CANCEL</button>
-          <button>START</button>
+          <button className='button' onClick={onClickCancel}>CANCEL</button>
+          <Link to='/pokedex' className='button'>START</Link>
         </div>
       </div>
     </div>
