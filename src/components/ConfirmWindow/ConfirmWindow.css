@@ -67,11 +67,17 @@
   to { width: 100% }
 }
 
+.buttonsAction {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .containerMainConfirm p span {
   color: var(--red-color);
 }
 
-.containerMainConfirm button {
+.buttonsAction button {
   border: 4px solid var(--red-color);
   border-radius: 4px;
   background-color: var(--red-color);
@@ -84,6 +90,6 @@
   transition: background-color 400ms;
 }
 
-.containerMainConfirm button:hover {
+.buttonsAction button:hover {
   background-color: rgba(237, 50, 55, 0.8);
 }

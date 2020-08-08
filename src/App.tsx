@@ -3,17 +3,29 @@ import './App.css';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 import { MainHome } from './components/MainHome/MainHome';
-import { MainConfirm } from "./components/MainConfirm/MainConfirm";
-import man from './assets/man.png'
+
+//          <Route exact path='/confirm' render={ConfirmWindow}/>
+import {
+  BrowserRouter,
+  Switch,
+  Route
+} from 'react-router-dom';
 
 function App() {
+
   return (
-    <div className="App">
+    <BrowserRouter>
       <Header/>
-      <MainHome/>
-      <MainConfirm name='Asperoon' trainer={man}/>
+      <div className="App">
+        <Switch>
+          <Route exact path='/' render={()=>
+            <MainHome/>
+          }/>
+        </Switch>
+      </div>
       <Footer/>
-    </div>
+    </BrowserRouter>
+
   );
 }
 
