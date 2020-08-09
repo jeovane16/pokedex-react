@@ -1,0 +1,45 @@
+.containerFilterByType {
+  color: #FFFFFF;
+  width: 40%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.listTypes {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 10px;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+.containerFilterByType span {
+  margin-left: 12px;
+}
+
+.listTypes li{
+  font-family: 'Press Start 2P', cursive;
+  width: 130px;
+  padding: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  font-size: 0.8rem;
+  transition: opacity 400ms, box-shadow 400ms;
+}
+
+.listTypes li:hover {
+  opacity: 0.6;
+  box-shadow: 4px 4px var(--dracula-color-secundary);
+}
+
+.listTypes li:focus {
+  outline: none;
+  color: #000000;
+  box-shadow: 4px 4px var(--dracula-color-secundary);
+}
