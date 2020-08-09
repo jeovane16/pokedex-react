@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './FIlterByType.css';
+import './FilterByType.css';
 
 export const FilterByType = ()=>{
   const types = [
