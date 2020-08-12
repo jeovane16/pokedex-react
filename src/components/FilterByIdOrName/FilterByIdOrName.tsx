@@ -1,8 +1,11 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, FormEvent, useState} from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { getPokemon } from "../../features/pokemons/pokemonsSlice";
 import './FilterByIdOrName.css';
+import {useDispatch} from "react-redux";
 
 export const FilterByIdOrName = ()=> {
+  const dispatch = useDispatch();
 
   const [idOrName, setIdOrName] = useState('');
 
@@ -10,11 +13,17 @@ export const FilterByIdOrName = ()=> {
     setIdOrName(event.target.value);
   }
 
+  const onClickSearch = (event:FormEvent<HTMLFormElement>)=>{
+    event.preventDefault()
+    dispatch(getPokemon(idOrName));
+    setIdOrName('');
+  }
+
   return (
     <div className="containerFilterByIdOrName">
-      <form action="">
+      <form onSubmit={onClickSearch}>
         <input type='text' placeholder='NAME OR ID' value={idOrName} onChange={onChangeIdOrName}/>
-        <button>
+        <button type='submit'>
           <AiOutlineSearch color='#FFFFFF' size={30}/>
         </button>
       </form>

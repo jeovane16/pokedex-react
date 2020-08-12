@@ -1,19 +1,19 @@
 .containerFilterByType {
   color: #FFFFFF;
   width: 50%;
+  margin-top: 45px;
 }
 
 .listTypes {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  padding: 10px;
   list-style: none;
   text-transform: uppercase;
 }
 
 .containerFilterByType span {
-  margin-left: 12px;
+  margin-left: 42px;
 }
 
 .listTypes li{

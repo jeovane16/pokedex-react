@@ -1,0 +1,69 @@
+.containerPokemonResult {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--dracula-color-secundary);
+    margin-top: 30px;
+    border-radius: 4px;
+    padding: 20px;
+    height: 105px;
+}
+
+.containerPokemonResult img {
+    border: 4px solid var(--red-color);
+    border-radius: 4px;
+    background-color: var(--dracula-color);
+}
+
+.containerInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.containerInfo button {
+    font-family: 'Press Start 2P', cursive;
+    background-color: var(--red-color);
+    color: #FFFFFF;
+    border-radius: 4px;
+    height: 35px;
+    border: 4px solid var(--red-color);
+    cursor: pointer;
+}
+
+.containerInfo button:hover {
+    background-color: rgba(237, 50, 55, 0.8);
+}
+
+.containerError {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: #FFFFFF;
+    background-color: var(--dracula-color-secundary);
+    margin-top: 30px;
+    padding: 20px;
+    height: 105px;
+    border-radius: 4px;
+}
+
+.error404 {
+    font-size: 2.5rem;
+    color: var(--red-color);
+}
+
+.error404 img {
+    margin-left: 2px;
+    margin-right: 6px;
+    animation: spin 4s infinite linear;
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}

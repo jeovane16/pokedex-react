@@ -1,5 +1,11 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import { getPokemonList } from '../../services/api';
+import { getPokemonByIdOrName, getPokemonList } from '../../services/api';
+import { AxiosError } from "axios";
+
+//Interfaces para a slice
+interface MyKnownError {
+  messageError: null | string
+}
 
 interface ListPokemons {
   results: [{
@@ -10,6 +16,7 @@ interface ListPokemons {
 
 interface Pokemon {
   id: number,
+  name: string,
   sprites: {
     front_default: string;
   },
@@ -21,6 +28,9 @@ interface Pokemon {
         url: string
       }
     }
+  ],
+  types: [
+    {type:{name: string}}
   ]
 }
 
@@ -33,7 +43,32 @@ interface ListPokemonsByType {
   }]
 }
 
-export const newListPokemons = createAsyncThunk<
+interface PokemonsState {
+  initialList: [{name: string, url:string}],
+  error: null | string,
+  initialListByType: ListPokemonsByType,
+  currentPokemon: Pokemon,
+  loading: 'idle' | 'pending' | 'fulfilled' | 'reject'
+}
+
+//thunk para api
+
+export const getPokemon = createAsyncThunk<
+  Pokemon,
+  string,
+  {
+    rejectValue: null | string
+  }
+>('pokemons/pokemon', async (nameOrId:string, thunkAPI) => {
+  const response =  await getPokemonByIdOrName(nameOrId).then(res => {
+    return res.data as Pokemon;
+  }).catch((error:AxiosError<Error>) => {
+    return thunkAPI.rejectWithValue(error.message)
+  });
+  return response;
+})
+
+export const getListPokemons = createAsyncThunk<
   ListPokemons
   >('pokemons/list', async ()=>{
   try {
@@ -48,14 +83,6 @@ export const newListPokemons = createAsyncThunk<
     return response;
   }
 })
-
-interface PokemonsState {
-  initialList: [{name: string, url:string}],
-  error: null | string,
-  initialListByType: ListPokemonsByType,
-  currentPokemon: Pokemon,
-  loading: 'idle' | 'pending' | 'fulfilled' | 'reject'
-}
 
 const initialState: PokemonsState = {
   initialList: [{
@@ -74,6 +101,7 @@ const initialState: PokemonsState = {
   loading: 'idle',
   currentPokemon: {
     id: 0,
+    name: '',
     sprites: {
       front_default: '',
     },
@@ -85,6 +113,9 @@ const initialState: PokemonsState = {
           url: ''
         }
       }
+    ],
+    types: [
+      {type:{name: ''}}
     ]
   }
 }
@@ -94,16 +125,32 @@ const pokemonsSlice = createSlice({
   initialState,
   reducers:{},
   extraReducers: builder => {
-    builder.addCase(newListPokemons.pending, (state, action) => {
+    builder.addCase(getListPokemons.pending, (state, action) => {
       state.loading = 'pending';
     })
-    builder.addCase(newListPokemons.fulfilled, (state, action)=>{
+    builder.addCase(getListPokemons.fulfilled, (state, action)=>{
       state.initialList = action.payload.results;
+      state.loading = 'fulfilled';
+    })
+    builder.addCase(getPokemon.fulfilled, (state, action)=>{
+      state.currentPokemon = action.payload;
+      state.error = null;
+      state.loading = 'fulfilled';
+    })
+    builder.addCase(getPokemon.rejected, (state, action) => {
+      if(action.payload){
+        state.error = action.payload;
+        state.loading = 'reject';
+      }
     })
   }
 })
 
 export default pokemonsSlice.reducer;
+
+export const selectCurrentPokemon = (state: { pokemons: PokemonsState }) => {
+  return state.pokemons.currentPokemon;
+}
 export const selectListPokemons = (state: { pokemons:PokemonsState }) => {
   return state.pokemons;
 }
