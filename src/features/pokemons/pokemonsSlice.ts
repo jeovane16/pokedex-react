@@ -82,10 +82,10 @@ export const selectPokemon = (state: { pokemons: PokemonsState }, idOrName: stri
     return null;
   }
   if(isNaN(parseInt(idOrName))){
-    return state.pokemons.initialList.find((pokemon)=> pokemon.name === idOrName);
+    return state.pokemons.initialList.find((pokemon) => pokemon.name === idOrName);
   }
   else {
-    return state.pokemons.initialList.find((pokemon)=> pokemon.id === parseInt(idOrName));
+    return state.pokemons.initialList.find((pokemon) => pokemon.id === parseInt(idOrName));
   }
 }
 
