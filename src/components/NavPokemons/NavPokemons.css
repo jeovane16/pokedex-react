@@ -1,5 +1,8 @@
 .navPokemonsContainer {
     width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .navPokemonsContainer ul {
@@ -9,17 +12,23 @@
     text-transform: uppercase;
     font-size: 0.8rem;
     padding: 0;
+    width: 100%;
 }
 
-.navPokemonsContainer ul li {
+.navPokemonsContainer li {
     display: flex;
     align-items: center;
-    /* justify-content: space-around; */
     background-color: var(--dracula-color-secundary);
     margin-top: 10px;
     color: #FFFFFF;
     border-radius: 4px;
     padding: 10px;
+    animation: hideAndShow 600ms linear;
+}
+
+@keyframes hideAndShow {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 
 .navPokemonsContainer ul li img {
@@ -34,4 +43,25 @@
 .navPokemonsContainer ul li div {
     display: flex;
     flex-direction: column;
+}
+
+.navPokemonsContainer button{
+    border: none;
+    width: 85px;
+    height: 40px;
+    background-color: var(--dracula-color);
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.navPokemonsContainer button:focus {
+    outline: none;
+}
+
+.up {
+    background-image: url('../../assets/btn-prev.svg');
+}
+
+.down {
+    background-image: url('../../assets/btn-next.svg');
 }
