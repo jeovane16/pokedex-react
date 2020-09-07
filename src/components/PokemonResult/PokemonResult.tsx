@@ -38,7 +38,6 @@ interface PokemonsState {
 
 export const PokemonResult = (props:{idOrName: string}) => {
   const pokemon = useSelector((state: { pokemons:PokemonsState }) => selectPokemon(state,props.idOrName));
-  // const status = useSelector((state:{pokemons:PokemonsState}) => state.pokemons.loading);
 
   const formatId = ()=> {
     if(pokemon){

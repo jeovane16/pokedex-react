@@ -33,7 +33,6 @@ export const NavPokemons = () => {
   const [partialListPokemons, setPartialListPokemons] = useState<Pokemon[]>([]);
   const [position, setPosition] = useState(0);
 
-
   useEffect(()=>{
     if(pokemons){
       setPartialListPokemons(pokemons.slice(position,position+5));
@@ -65,7 +64,7 @@ export const NavPokemons = () => {
 
   return (
     <nav className = 'navPokemonsContainer'>
-      <button className='up' onClick={getUp}></button>
+      <button className='up' onClick={getUp}/>
       <ul>
         {partialListPokemons.map(pokemon => {
           return (
@@ -80,7 +79,7 @@ export const NavPokemons = () => {
           );
         })}
       </ul>
-      <button className='down' onClick={getDown}></button>
+      <button className='down' onClick={getDown}/>
     </nav>
   );
 }

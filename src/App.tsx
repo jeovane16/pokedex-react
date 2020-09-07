@@ -12,6 +12,7 @@ import {
 import {MainPokedex} from "./components/MainPokedex/MainPokedex";
 import {useDispatch, useSelector} from "react-redux";
 import {listPokemons} from "./features/pokemons/pokemonsSlice";
+import {LoadingPokemon} from './components/LoadingPokemon/LoadingPokemon';
 
 interface Pokemon {
   id: number,
@@ -54,16 +55,22 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header/>
+      {loading === 'pending' ?
+        '':
+        <Header/>
+      }
       <div className="App">
         <Switch>
           <Route exact path='/' render={()=>
             <MainHome/>
           }/>
-          <Route exact path='/pokedex' render={MainPokedex}/>
+          <Route exact path='/pokedex' render={ loading === 'pending' ? LoadingPokemon : MainPokedex}/>
         </Switch>
       </div>
-      <Footer/>
+      {loading === 'pending' ?
+        '' :
+        <Footer/>
+      }
     </BrowserRouter>
 
   );
